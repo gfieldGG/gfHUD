@@ -1,0 +1,37 @@
+weapon1 melee
+255 255 255
+weapon2 burst
+0 255 255
+weapon3 shot
+255 150 0
+weapon4 nade
+99 221 74
+weapon5 plasma
+255 0 255
+weapon6 rox
+250 0 0
+weapon7 ion
+0 128 255
+weapon8 bolt
+255 255 0
+weapon9 stake
+128 0 0
+
+
+armor0 green
+0 255 0
+armor1 yellow
+255 255 0
+armor2 red
+255 0 0
+
+megahealth
+59 79 252
+
+
+Status icons
+ein icon mit fortschrittsbalken -> nach unten
+zwei icons mit fortschrittsbalken -> alles gut
+zwei icons mit fortschrittsbalken und ein anderes -> fortschrittsbalken oben und unten
+mega immer mitte
+wenn flagge zu mega, flagge oben

@@ -20,7 +20,6 @@ function gfHealth:draw()
 
 	local player = getPlayer();
 
-	nvgFontFace("oswald-bold");
 	nvgFontFace("robotocondensed-bold");
 	nvgFontSize(150);
 	nvgTextAlign(NVG_ALIGN_RIGHT, NVG_ALIGN_BOTTOM);
