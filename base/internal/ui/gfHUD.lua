@@ -19,7 +19,8 @@ GF_COLORS = {
 	cyan = Color(255, 255, 255),
 	dark = Color(51, 51, 51),
 	darkred = Color(102, 23, 24),
-	white = Color(255, 255, 255)
+	white = Color(255, 255, 255),
+	grey = Color(180, 180, 180)
 };
 
 GF_WEAPON_COLORS = {

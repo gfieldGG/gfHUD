@@ -28,6 +28,8 @@ end
 --
 
 function gfTimer:draw()
+	if not shouldShowHUD() then return end;
+
 	local timerWidth = 216;
 	local timerHeight = 96;
 

@@ -42,12 +42,14 @@ function gfAmmo:draw()
 	local x = startx;
 
 	for i = 1, 6 do
-		if i == 4 then
+		if i == 4 then -- break lines
 			y = y + 80;
 			x = startx;
 		end
+
 		local weapon = GF_WEAPON_ORDER[i];
 		local svgName = "internal/ui/icons/weapon"..weapon;
+
 		if weapon == player.weaponIndexSelected then
 			drawSquare(x,y,ammoWidth,ammoHeight,GF_WEAPON_COLORS[weapon]);
 			x = x + 40;
@@ -57,8 +59,13 @@ function gfAmmo:draw()
 			nvgText(x, y, player.weapons[weapon].ammo);
 			x = x + 53;
 		else
+			if not player.weapons[weapon].pickedup then
+				nvgFillColor(GF_COLORS.grey);
+			else
+				nvgFillColor(GF_WEAPON_COLORS[weapon]);
+			end
 			x = x + 40;
-			nvgFillColor(GF_WEAPON_COLORS[weapon]);
+
 			nvgSvg(svgName, x, y, 24);
 			x = x + 75;
 			drawShadowText(x, y, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, player.weapons[weapon].ammo);
