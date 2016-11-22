@@ -1,6 +1,8 @@
-
 require "base/internal/ui/reflexcore"
+require "base/internal/ui/gfhud"
+
 --
+
 gfArmor =
 {
 };
@@ -20,8 +22,5 @@ function gfArmor:draw()
 
 	local player = getPlayer();
 
-	nvgFontFace("robotocondensed-bold");
-	nvgFontSize(150);
-	nvgTextAlign(NVG_ALIGN_LEFT, NVG_ALIGN_BOTTOM);
-	nvgText(20, 0, player.armor);
+	drawShadowText(144, -256, GF_FONT_SIZE_BIG, NVG_ALIGN_CENTER, GF_ARMOR_COLORS[player.armorProtection+1], player.armor);
 end

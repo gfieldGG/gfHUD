@@ -1,5 +1,5 @@
-
 require "base/internal/ui/reflexcore"
+require "base/internal/ui/gfhud"
 --
 gfHealth =
 {
@@ -20,8 +20,5 @@ function gfHealth:draw()
 
 	local player = getPlayer();
 
-	nvgFontFace("robotocondensed-bold");
-	nvgFontSize(150);
-	nvgTextAlign(NVG_ALIGN_RIGHT, NVG_ALIGN_BOTTOM);
-	nvgText(-20, 0, player.health);
+	drawShadowText(-144, -256, GF_FONT_SIZE_BIG, NVG_ALIGN_CENTER, GF_COLORS.white, player.health);
 end
