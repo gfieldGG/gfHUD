@@ -65,9 +65,8 @@ function drawSquare(x, y, w, h, color)
 	y = y - (h/2);
 
 	-- shadow
-
 	nvgBeginPath();
-	--nvgRect(x, y, w + 20, h + 30);
+	nvgRect(x-22, y-22, w + 34, h + 34);
 	nvgRoundedRect(x-12, y-12, w+24, h+24, GF_CORNER_RADIUS);
 	nvgPathWinding(NVG_HOLE);
 	nvgFillBoxGradient(x-12, y-12, w+24, h+24, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 51), Color(0, 0, 0, 0));
@@ -75,9 +74,9 @@ function drawSquare(x, y, w, h, color)
 	-- shadow top
 
 
-	-- shadow bottom
+	--[[ shadow bottom
 	nvgBeginPath();
-	--nvgRect(x, y, w + 20, h + 30);
+	nvgRect(x-22, y-22, w + 34, h + 34);
 	nvgRoundedRect(x-2, y+2, w+4, h+4, GF_CORNER_RADIUS);
 	nvgPathWinding(NVG_HOLE);
 	nvgFillBoxGradient(x-2, y+2, w+4, h+4, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 84), Color(0, 0, 0, 0));
@@ -87,7 +86,7 @@ function drawSquare(x, y, w, h, color)
 	nvgBeginPath();
 	nvgFillColor(color);
 	nvgRoundedRect(x, y, w, h, GF_CORNER_RADIUS);
-	nvgFill();
+	nvgFill(); --]]
 end
 
 function drawShadowText(x, y, size, align, color, text)
