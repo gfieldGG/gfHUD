@@ -57,7 +57,7 @@ function gfAmmo:draw()
 			nvgFillColor(GF_COLORS.white);
 			nvgSvg(svgName, x, y, iconRadius);
 			x = x + 74.5;
-			nvgText(x, y, player.weapons[weapon].ammo);
+			nvgText(x, y-3, player.weapons[weapon].ammo);
 			x = x + 77.5;
 		else
 			if not player.weapons[weapon].pickedup then
@@ -69,7 +69,7 @@ function gfAmmo:draw()
 
 			nvgSvg(svgName, x, y, iconRadius);
 			x = x + 74.5;
-			drawShadowText(x, y, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, player.weapons[weapon].ammo);
+			drawShadowText(x, y-3, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, player.weapons[weapon].ammo);
 			x = x + 77.5;
 		end
 	end

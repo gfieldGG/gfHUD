@@ -22,7 +22,7 @@ local function getTime()
 		timeToShow = world.gameTimeLimit;
 	end
 	local t = FormatTime(timeToShow);
-	return string.format("%d:%02d", t.minutes, t.seconds);
+	return string.format("%02d:%02d", t.minutes, t.seconds);
 end
 
 --
@@ -41,9 +41,9 @@ function gfTimer:draw()
 	nvgFontFace(GF_FONT);
 	if (world.gameState == GAME_STATE_ACTIVE) or (world.gameState == GAME_STATE_ROUNDACTIVE) then
 		nvgFontSize(GF_FONT_SIZE_MEDIUM);
-		nvgText(0, timerHeight/2, getTime());
+		nvgText(0, (timerHeight/2-3), getTime());
 	else
 		nvgFontSize(GF_FONT_SIZE_SMALL);
-		nvgText(0, timerHeight/2, "WARMUP");
+		nvgText(0, (timerHeight/2)-2, "WARMUP");
 	end
 end

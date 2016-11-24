@@ -61,32 +61,30 @@ GF_WEAPON_ICON_WIDTH = {
 };
 
 function drawSquare(x, y, w, h, color)
-	--x = x - (w/2);
-	y = y - (h/2);
+	local svgName = "internal/ui/gfHUD/" .. (w/h)*1000;
 
 	-- shadow
 	nvgBeginPath();
-	nvgRect(x - 48, y - 48, w + 96, h + 96);
-	nvgRoundedRect(x, y, w, h, GF_CORNER_RADIUS);
-	nvgPathWinding(NVG_HOLE);
-	nvgFillBoxGradient(x, y, w, h, GF_CORNER_RADIUS, 32, Color(0, 0, 0, 30), Color(0, 0, 0, 0));
-	nvgFill();
+	nvgFillColor(Color(0, 0, 0, 51));
+	nvgSvg(svgName, x+w/2, y, w/2, 24);
+
 	-- shadow top
-
-
-	--[[ shadow bottom
 	nvgBeginPath();
-	nvgRect(x-22, y-22, w + 34, h + 34);
-	nvgRoundedRect(x-2, y+2, w+4, h+4, GF_CORNER_RADIUS);
-	nvgPathWinding(NVG_HOLE);
-	nvgFillBoxGradient(x-2, y+2, w+4, h+4, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 84), Color(0, 0, 0, 0));
-	nvgFill();
+	nvgFillColor(Color(0, 0, 0, 26));
+	nvgSvg(svgName, x+(w/2), y-1, w/2, 4);
 
+
+	-- shadow bottom
+	nvgBeginPath();
+	nvgFillColor(Color(0, 0, 0, 85));
+	nvgSvg(svgName, x+(w/2), y+4, w/2, 4);
+
+	y = y - (h/2);
 	-- box
 	nvgBeginPath();
 	nvgFillColor(color);
 	nvgRoundedRect(x, y, w, h, GF_CORNER_RADIUS);
-	nvgFill(); --]]
+	nvgFill();
 end
 
 function drawShadowText(x, y, size, align, color, text)
@@ -105,7 +103,7 @@ function drawShadowText(x, y, size, align, color, text)
 	nvgText(x, y-1, text);
 	-- shadow bottom
 	nvgFontBlur(4);
-	nvgFillColor(Color(0, 0, 0, 84));
+	nvgFillColor(Color(0, 0, 0, 85));
 	nvgText(x, y+4, text);
 
 	-- text
