@@ -58,9 +58,9 @@ GF_WEAPON_ICON_WIDTH = {
 	48,
 	48,
 	48
-}
+};
 
-function drawSquare (x, y, w, h, color)
+function drawSquare(x, y, w, h, color)
 	--x = x - (w/2);
 	y = y - (h/2);
 
@@ -70,7 +70,7 @@ function drawSquare (x, y, w, h, color)
 	--nvgRect(x, y, w + 20, h + 30);
 	nvgRoundedRect(x-12, y-12, w+24, h+24, GF_CORNER_RADIUS);
 	nvgPathWinding(NVG_HOLE);
-	nvgFillBoxGradient(x, y, w, h, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 51), Color(0, 0, 0, 0));
+	nvgFillBoxGradient(x-12, y-12, w+24, h+24, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 51), Color(0, 0, 0, 0));
 	nvgFill();
 	-- shadow top
 
@@ -80,7 +80,7 @@ function drawSquare (x, y, w, h, color)
 	--nvgRect(x, y, w + 20, h + 30);
 	nvgRoundedRect(x-2, y+2, w+4, h+4, GF_CORNER_RADIUS);
 	nvgPathWinding(NVG_HOLE);
-	nvgFillBoxGradient(x, y, w, h, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 84), Color(0, 0, 0, 0));
+	nvgFillBoxGradient(x-2, y+2, w+4, h+4, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 84), Color(0, 0, 0, 0));
 	nvgFill();
 
 	-- box
@@ -90,7 +90,7 @@ function drawSquare (x, y, w, h, color)
 	nvgFill();
 end
 
-function drawShadowText (x, y, size, align, color, text)
+function drawShadowText(x, y, size, align, color, text)
 	nvgBeginPath();
 	nvgFontFace(GF_FONT);
 	nvgFontSize(size);
@@ -115,6 +115,6 @@ function drawShadowText (x, y, size, align, color, text)
 	nvgText(x, y, text);
 end
 
-function drawShadowSvg (obj)
+function drawShadowSvg(obj)
 	-- body...
 end
