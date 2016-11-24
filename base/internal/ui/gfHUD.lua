@@ -3,9 +3,9 @@ require "base/internal/ui/reflexcore"
 --
 
 GF_FONT = "robotocondensed-bold";
-GF_FONT_SIZE_SMALL = 48;
-GF_FONT_SIZE_MEDIUM = 80;
-GF_FONT_SIZE_BIG = 128;
+GF_FONT_SIZE_SMALL = 48*(4/3);
+GF_FONT_SIZE_MEDIUM = 80*(4/3);
+GF_FONT_SIZE_BIG = 128*(4/3);
 
 GF_CORNER_RADIUS = 2;
 
@@ -24,15 +24,15 @@ GF_COLORS = {
 };
 
 GF_WEAPON_COLORS = {
-	GF_COLORS.white,
-	GF_COLORS.cyan,
-	GF_COLORS.orange,
-	GF_COLORS.green,
-	GF_COLORS.purple,
-	GF_COLORS.red,
-	GF_COLORS.blue,
-	GF_COLORS.yellow,
-	GF_COLORS.white
+	GF_COLORS.white, --meelee
+	GF_COLORS.cyan, --burst
+	GF_COLORS.orange, --shotgun
+	GF_COLORS.green, --grenades
+	GF_COLORS.purple, --plasma
+	GF_COLORS.red, --rockets
+	GF_COLORS.blue, --ion
+	GF_COLORS.yellow, --bolt
+	GF_COLORS.white --stake
 };
 
 GF_ARMOR_COLORS = {
@@ -66,10 +66,10 @@ function drawSquare(x, y, w, h, color)
 
 	-- shadow
 	nvgBeginPath();
-	nvgRect(x - 24, y - 24, w + 48, h + 48);
+	nvgRect(x - 48, y - 48, w + 96, h + 96);
 	nvgRoundedRect(x, y, w, h, GF_CORNER_RADIUS);
 	nvgPathWinding(NVG_HOLE);
-	nvgFillBoxGradient(x, y, w, h, GF_CORNER_RADIUS, 24, Color(0, 0, 0, 51), Color(0, 0, 0, 0));
+	nvgFillBoxGradient(x, y, w, h, GF_CORNER_RADIUS, 32, Color(0, 0, 0, 30), Color(0, 0, 0, 0));
 	nvgFill();
 	-- shadow top
 

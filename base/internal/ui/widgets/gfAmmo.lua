@@ -35,6 +35,7 @@ function gfAmmo:draw()
 
 	local ammoWidth = 168;
 	local ammoHeight = 64;
+	local iconRadius = 24;
 	local startx = -276;
 	local y = -152;
 
@@ -51,13 +52,13 @@ function gfAmmo:draw()
 		local svgName = "internal/ui/icons/weapon"..weapon;
 
 		if weapon == player.weaponIndexSelected then
-			drawSquare(x,y,ammoWidth,ammoHeight,GF_WEAPON_COLORS[weapon]);
+			drawSquare(x, y, ammoWidth, ammoHeight, GF_WEAPON_COLORS[weapon]);
 			x = x + 40;
 			nvgFillColor(GF_COLORS.white);
-			nvgSvg(svgName, x, y, 24);
-			x = x + 75;
+			nvgSvg(svgName, x, y, iconRadius);
+			x = x + 74.5;
 			nvgText(x, y, player.weapons[weapon].ammo);
-			x = x + 53;
+			x = x + 77.5;
 		else
 			if not player.weapons[weapon].pickedup then
 				nvgFillColor(GF_COLORS.grey);
@@ -66,11 +67,10 @@ function gfAmmo:draw()
 			end
 			x = x + 40;
 
-			nvgSvg(svgName, x, y, 24);
-			x = x + 75;
+			nvgSvg(svgName, x, y, iconRadius);
+			x = x + 74.5;
 			drawShadowText(x, y, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, player.weapons[weapon].ammo);
-			x = x + 53;
+			x = x + 77.5;
 		end
 	end
-
 end
