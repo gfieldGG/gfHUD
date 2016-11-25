@@ -37,6 +37,16 @@ mega immer mitte
 wenn flagge zu mega, flagge oben
 
 
+TODO buffs
 TODO font offset via function
 TODO all the drawing in functions
 TODO global var for shadow colors and blur
+TODO low ammo (maybe also current ammo display)
+TODO Show score
+TODO killfeed
+TODO chat
+TODO awards?
+TODO readyup status & game/map info
+TODO Crosshair (hitmarker color fill)
+TODO Race HUD
+TODO Spectator HUD

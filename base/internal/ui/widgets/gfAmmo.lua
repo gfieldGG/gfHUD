@@ -18,7 +18,7 @@ end
 
 local function getAmmo(slot)
 	local player = getPlayer();
-	return player.weapons[GF_WEAPON_ORDER[slot]].ammo;
+	return player.weapons[slot].ammo;
 end
 
 --
@@ -56,7 +56,7 @@ function gfAmmo:draw()
 			nvgFillColor(svgColor);
 			nvgSvg(svgName, x, y, iconRadius);
 			x = x + 74.5;
-			nvgText(x, y-3, player.weapons[weapon].ammo);
+			nvgText(x, y-3, getAmmo(weapon));
 			x = x + 77.5;
 		else
 			if not player.weapons[weapon].pickedup then
@@ -65,11 +65,9 @@ function gfAmmo:draw()
 				svgColor = GF_WEAPON_COLORS[weapon];
 			end
 			x = x + 40;
-			--consolePrint("Shadow incoming");
 			drawShadowSvg(svgName, x, y, iconRadius, svgColor);
-			--consolePrint("Shadow done?");
 			x = x + 74.5;
-			drawShadowText(x, y-3, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, player.weapons[weapon].ammo);
+			drawShadowText(x, y-3, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, getAmmo(weapon));
 			x = x + 77.5;
 		end
 	end
