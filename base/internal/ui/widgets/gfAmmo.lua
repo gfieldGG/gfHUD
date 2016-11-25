@@ -38,8 +38,6 @@ function gfAmmo:draw()
 	local iconRadius = 24;
 	local startx = -276;
 	local y = -152;
-
-	local line = 1;
 	local x = startx;
 
 	for i = 1, 6 do
@@ -50,24 +48,26 @@ function gfAmmo:draw()
 
 		local weapon = GF_WEAPON_ORDER[i];
 		local svgName = "internal/ui/icons/weapon"..weapon;
+		local svgColor = GF_COLORS.white;
 
 		if weapon == player.weaponIndexSelected then
-			drawSquare(x, y, ammoWidth, ammoHeight, GF_WEAPON_COLORS[weapon]);
+			drawBox(x, y, ammoWidth, ammoHeight, GF_WEAPON_COLORS[weapon]);
 			x = x + 40;
-			nvgFillColor(GF_COLORS.white);
+			nvgFillColor(svgColor);
 			nvgSvg(svgName, x, y, iconRadius);
 			x = x + 74.5;
 			nvgText(x, y-3, player.weapons[weapon].ammo);
 			x = x + 77.5;
 		else
 			if not player.weapons[weapon].pickedup then
-				nvgFillColor(GF_COLORS.grey);
+				svgColor = GF_COLORS.grey;
 			else
-				nvgFillColor(GF_WEAPON_COLORS[weapon]);
+				svgColor = GF_WEAPON_COLORS[weapon];
 			end
 			x = x + 40;
-
-			nvgSvg(svgName, x, y, iconRadius);
+			--consolePrint("Shadow incoming");
+			drawShadowSvg(svgName, x, y, iconRadius, svgColor);
+			--consolePrint("Shadow done?");
 			x = x + 74.5;
 			drawShadowText(x, y-3, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, GF_COLORS.white, player.weapons[weapon].ammo);
 			x = x + 77.5;

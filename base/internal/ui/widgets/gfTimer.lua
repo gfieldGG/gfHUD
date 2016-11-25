@@ -33,7 +33,7 @@ function gfTimer:draw()
 	local timerWidth = 216;
 	local timerHeight = 96;
 
-	drawSquare(-(timerWidth/2), timerHeight/2, timerWidth, timerHeight, GF_COLORS.dark);
+	drawBox(-(timerWidth/2), timerHeight/2, timerWidth, timerHeight, GF_COLORS.dark);
 
 	nvgBeginPath();
 	nvgFillColor(GF_COLORS.white);

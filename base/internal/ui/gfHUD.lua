@@ -50,41 +50,40 @@ GF_WEAPON_ORDER = {
 	4
 };
 
-GF_WEAPON_ICON_WIDTH = {
-	48,
-	48,
-	48,
-	48,
-	48,
-	48,
-	48
-};
 
-function drawSquare(x, y, w, h, color)
-	local svgName = "internal/ui/gfHUD/" .. (w/h)*1000;
-
-	-- shadow
-	nvgBeginPath();
-	nvgFillColor(Color(0, 0, 0, 51));
-	nvgSvg(svgName, x+w/2, y, w/2, 24);
-
-	-- shadow top
-	nvgBeginPath();
-	nvgFillColor(Color(0, 0, 0, 26));
-	nvgSvg(svgName, x+(w/2), y-1, w/2, 4);
-
-
-	-- shadow bottom
-	nvgBeginPath();
-	nvgFillColor(Color(0, 0, 0, 85));
-	nvgSvg(svgName, x+(w/2), y+4, w/2, 4);
+function drawBox(x, y, w, h, color)
+	-- draw shadows
+	local svgName = "internal/ui/gfHUD/" .. w .. h;
+	drawShadowSvg(svgName, x+(w/2), y, w/2);
 
 	y = y - (h/2);
-	-- box
+	-- draw box
 	nvgBeginPath();
 	nvgFillColor(color);
 	nvgRoundedRect(x, y, w, h, GF_CORNER_RADIUS);
 	nvgFill();
+end
+
+function drawShadowSvg(svgName, x, y, radius, color)
+	-- shadow
+	nvgBeginPath();
+	nvgFillColor(Color(0, 0, 0, 51));
+	nvgSvg(svgName, x, y, radius, 24);
+	-- shadow top
+	nvgBeginPath();
+	nvgFillColor(Color(0, 0, 0, 26));
+	nvgSvg(svgName, x, y-1, radius, 4);
+
+	-- shadow bottom
+	nvgBeginPath();
+	nvgFillColor(Color(0, 0, 0, 85));
+	nvgSvg(svgName, x, y+4, radius, 4);
+
+	-- draw svg
+	if color == nil then return end; -- skip colored svg if no color
+	nvgBeginPath();
+	nvgFillColor(color);
+	nvgSvg(svgName, x, y, radius);
 end
 
 function drawShadowText(x, y, size, align, color, text)
@@ -97,10 +96,12 @@ function drawShadowText(x, y, size, align, color, text)
 	nvgFontBlur(24);
 	nvgFillColor(Color(0, 0, 0, 51));
 	nvgText(x, y, text);
+
 	-- shadow top
 	nvgFontBlur(4);
 	nvgFillColor(Color(0, 0, 0, 26));
 	nvgText(x, y-1, text);
+
 	-- shadow bottom
 	nvgFontBlur(4);
 	nvgFillColor(Color(0, 0, 0, 85));
@@ -110,8 +111,4 @@ function drawShadowText(x, y, size, align, color, text)
 	nvgFontBlur(0);
 	nvgFillColor(color);
 	nvgText(x, y, text);
-end
-
-function drawShadowSvg(obj)
-	-- body...
 end

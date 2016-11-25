@@ -35,3 +35,8 @@ zwei icons mit fortschrittsbalken -> alles gut
 zwei icons mit fortschrittsbalken und ein anderes -> fortschrittsbalken oben und unten
 mega immer mitte
 wenn flagge zu mega, flagge oben
+
+
+TODO font offset via function
+TODO all the drawing in functions
+TODO global var for shadow colors and blur
