@@ -50,3 +50,9 @@ TODO readyup status & game/map info
 TODO Crosshair (hitmarker color fill)
 TODO Race HUD
 TODO Spectator HUD
+TODO ready up status in timer warmup
+TODO adjust grey color
+TODO start timer in timer
+TODO adjust yellow color
+TODO show item pickups (no timer or stamp)
+TODO color life

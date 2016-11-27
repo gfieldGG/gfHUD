@@ -128,7 +128,7 @@ function gfScore:draw()
 	local scoreWidth = 120;
 	local scoreHeight = 96;
 
-	local scoreColor, scoreFrameColor, scoreText = self:GetDeltaColorAndText();
+	local scoreColor, scoreFrameColor, scoreText = self.GetDeltaColorAndText();
 
 	drawBox(108, scoreHeight/2, scoreWidth, scoreHeight, scoreFrameColor);
 	nvgBeginPath();
