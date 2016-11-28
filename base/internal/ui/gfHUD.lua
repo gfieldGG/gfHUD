@@ -20,7 +20,8 @@ GF_COLORS = {
 	dark = Color(51, 51, 51),
 	darkred = Color(102, 23, 24),
 	white = Color(255, 255, 255),
-	grey = Color(180, 180, 180)
+	grey = Color(180, 180, 180),
+	darkblue = Color(49,68,224)
 };
 
 GF_WEAPON_COLORS = {
@@ -49,6 +50,13 @@ GF_WEAPON_ORDER = {
 	5,
 	4
 };
+
+GF_BUFFS = {
+	mega = {"internal/ui/icons/gfMega", GF_COLORS.darkblue, 7},
+	carnage = {"internal/ui/icons/gfCarnage", GF_COLORS.orange, 8},
+	resist = {"internal/ui/icons/resist", GF_COLORS.cyan, 7},
+	flag = {"internal/ui/icons/CTFflag", GF_COLORS.green, 9.5}
+}
 
 
 function drawBox(x, y, w, h, color)

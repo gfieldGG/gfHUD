@@ -16,8 +16,11 @@ end
 
 --
 
-local function drawBuff (x, y, color, icon, percent)
-	drawBox(x, y, 24, 24, color);
+local function drawBuff (x, y, buff, percent)
+	drawBox(x, y, 24, 24, buff[2]);
+	nvgBeginPath();
+	nvgFillColor(GF_COLORS.white);
+	nvgSvg(buff[1], x+12, y, buff[3]);
 end
 
 function gfBuffs:draw()
@@ -31,19 +34,19 @@ function gfBuffs:draw()
 
 	-- carnage
 	if player.carnageTimer > 0 then
-		drawBuff(x, y, Color(224,151,50), "internal/ui/icons/carnage");
+		drawBuff(x, y, GF_BUFFS.carnage);
 		y = y - 32;
 	end
 
 	-- resist
 	if player.resistTimer > 0 then
-		drawBuff(x, y, Color(255,120,128), "internal/ui/icons/resist");
+		drawBuff(x, y, GF_BUFFS.resist);
 		y = y - 32;
 	end
 
 	-- mega
 	if player.hasMega then
-		drawBuff(x, y, Color(49,68,224), "internal/ui/icons/health");
+		drawBuff(x, y, GF_BUFFS.mega);
 		y = y - 32;
 	end
 
@@ -52,7 +55,7 @@ function gfBuffs:draw()
 		local teamFlagHolding = (player.team == 1) and 2 or 1; -- (other team flag)
 		local icon = "internal/ui/icons/CTFflag";
 		local iconCol = teamColors[teamFlagHolding];
-		drawBuff(x, y, iconCol, icon);
+		drawBuff(x, y, GF_BUFFS.flag); -- TODO use team color
 		y = y - 32;
 	end
 end
