@@ -56,3 +56,4 @@ TODO start timer in timer
 TODO adjust yellow color
 TODO show item pickups (no timer or stamp)
 TODO color life
+TODO show timer in deathscreen
