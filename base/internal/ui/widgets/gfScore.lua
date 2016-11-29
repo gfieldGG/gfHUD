@@ -46,9 +46,7 @@ function gfScore:GetDeltaColorAndText()
 		if (teamToDisplayFrom == 2) then
 			deltaScore = -deltaScore;
 		end
-
 	else
-
 		local playersSorted = {};
 		local playersSortedCount = 0;
 
@@ -73,7 +71,6 @@ function gfScore:GetDeltaColorAndText()
 
 		-- displaying from a player POV or global POV?
 		if (playerIndexCameraAttachedTo > 0) and (players[playerIndexCameraAttachedTo].state == PLAYER_STATE_INGAME) then
-
 			-- displaying from this players POV
 			local playerScore = players[playerIndexCameraAttachedTo].score;
 			if playersSorted[1].index == playerIndexCameraAttachedTo then
@@ -85,9 +82,7 @@ function gfScore:GetDeltaColorAndText()
 			else
 				deltaScore = playerScore - playersSorted[1].score;
 			end
-
 		else
-
 			-- display from winners POV
 			if playersSortedCount > 1 then
 				deltaScore = playersSorted[1].score - playersSorted[2].score;

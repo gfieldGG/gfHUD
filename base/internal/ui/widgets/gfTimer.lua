@@ -24,10 +24,8 @@ local function drawCountdown()
 	-- this flicks to 0 some times, just clamp it to 1
 	t.seconds = math.max(1, t.seconds);
 
-
 	local text = t.seconds;
 	drawText(x, y, text, GF_COLORS.white, GF_FONT_SIZE_MEDIUM);
-
 
 	if gfTimer.lastTickSeconds ~= t.seconds then
 		gfTimer.lastTickSeconds = t.seconds;

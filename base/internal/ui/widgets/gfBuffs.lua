@@ -23,6 +23,8 @@ local function drawBuff (x, y, buff, percent)
 	nvgSvg(buff[1], x+12, y, buff[3]);
 end
 
+--
+
 function gfBuffs:draw()
 	if not shouldShowHUD() then return end;
 

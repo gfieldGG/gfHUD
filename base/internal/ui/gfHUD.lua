@@ -58,6 +58,7 @@ GF_BUFFS = {
 	flag = {"internal/ui/icons/CTFflag", GF_COLORS.green, 9.5}
 }
 
+--
 
 function drawBox(x, y, w, h, color)
 	-- draw shadows
@@ -71,6 +72,8 @@ function drawBox(x, y, w, h, color)
 	nvgRoundedRect(x, y, w, h, GF_CORNER_RADIUS);
 	nvgFill();
 end
+
+--
 
 function drawShadowSvg(svgName, x, y, radius, color)
 	-- shadow
@@ -94,6 +97,8 @@ function drawShadowSvg(svgName, x, y, radius, color)
 	nvgSvg(svgName, x, y, radius);
 end
 
+--
+
 function drawText(x, y, text, color, size, blur)
 	nvgBeginPath();
 	if blur == nil then blur = 0 end
@@ -108,6 +113,8 @@ function drawText(x, y, text, color, size, blur)
 
 	nvgText(x, y-yOff, text);
 end
+
+--
 
 function drawShadowText(x, y, size, color, text)
 	-- shadow
