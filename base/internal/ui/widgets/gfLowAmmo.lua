@@ -25,9 +25,7 @@ local function drawAmmo(weapon, ammo)
 	local icon = "internal/ui/icons/weapon"..weapon;
 	drawBox(x, y, w, h, GF_COLORS.darkred);
 	x = x + 32;
-	nvgBeginPath();
-	nvgFillColor(GF_COLORS.white);
-	nvgSvg(icon, x, y, 24);
+	drawSvg(x, y, icon, GF_COLORS.white, 24);
 	x = x +24+8+28;
 	drawText(x, y, ammo, GF_COLORS.white, GF_FONT_SIZE_SMALL);
 end

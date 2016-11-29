@@ -22,5 +22,5 @@ function gfHealth:draw()
 
 	local player = getPlayer();
 
-	drawShadowText(-144, -253, GF_FONT_SIZE_BIG, GF_COLORS.white, player.health);
+	drawText(-144, -253, player.health, GF_COLORS.white, GF_FONT_SIZE_BIG, true);
 end

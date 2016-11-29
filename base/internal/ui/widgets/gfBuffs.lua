@@ -18,9 +18,10 @@ end
 
 local function drawBuff (x, y, buff, percent)
 	drawBox(x, y, 24, 24, buff[2]);
-	nvgBeginPath();
+	--[[nvgBeginPath();
 	nvgFillColor(GF_COLORS.white);
-	nvgSvg(buff[1], x+12, y, buff[3]);
+	nvgSvg(buff[1], x+12, y, buff[3]);--]]
+	drawSvg(x+12, y, buff[1], GF_COLORS.white, buff[3]);
 end
 
 --

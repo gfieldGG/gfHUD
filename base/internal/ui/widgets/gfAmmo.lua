@@ -23,15 +23,31 @@ end
 
 --
 
+function drawAmmoBox (x, y, weapon, ammo, pickedup, selected)
+	local ammoWidth = 168;
+	local ammoHeight = 64;
+	local iconRadius = 24;
+
+	local weaponColor = GF_WEAPON_COLORS[weapon];
+	local svgName = "internal/ui/icons/weapon"..weapon;
+
+	if selected then
+		drawBox(x, y, ammoWidth, ammoHeight, weaponColor);
+	end
+	x = x + 40;
+	drawSvg(x, y, svgName, (selected and GF_COLORS.white or pickedup and weaponColor or GF_COLORS.grey), iconRadius, not selected);
+	x = x + 74.5;
+	drawText(x, y, ammo, (pickedup and GF_COLORS.white or GF_COLORS.grey), GF_FONT_SIZE_SMALL, not selected);
+end
+
+--
+
 function gfAmmo:draw()
 	if not shouldShowHUD() then return end;
 	if isRaceMode() then return end;
 
 	local player = getPlayer();
 
-	local ammoWidth = 168;
-	local ammoHeight = 64;
-	local iconRadius = 24;
 	local startx = -276;
 	local y = -152;
 	local x = startx;
@@ -43,30 +59,8 @@ function gfAmmo:draw()
 		end
 
 		local weapon = GF_WEAPON_ORDER[i];
-		local svgName = "internal/ui/icons/weapon"..weapon;
-		local svgColor = GF_COLORS.white;
 
-		if weapon == player.weaponIndexSelected then
-			drawBox(x, y, ammoWidth, ammoHeight, GF_WEAPON_COLORS[weapon]);
-			x = x + 40;
-			nvgFillColor(svgColor);
-			nvgSvg(svgName, x, y, iconRadius);
-			x = x + 74.5;
-			drawText(x,y,getAmmo(weapon), svgColor, GF_FONT_SIZE_SMALL);
-			x = x + 77.5;
-		else
-			local ammoColor = GF_COLORS.white;
-			if not player.weapons[weapon].pickedup then
-				svgColor = GF_COLORS.grey;
-				ammoColor = GF_COLORS.grey;
-			else
-				svgColor = GF_WEAPON_COLORS[weapon];
-			end
-			x = x + 40;
-			drawShadowSvg(svgName, x, y, iconRadius, svgColor);
-			x = x + 74.5;
-			drawShadowText(x, y, GF_FONT_SIZE_SMALL, ammoColor, getAmmo(weapon));
-			x = x + 77.5;
-		end
+		drawAmmoBox(x, y, weapon, getAmmo(weapon), player.weapons[weapon].pickedup, weapon == player.weaponIndexSelected);
+		x = x +192;
 	end
 end

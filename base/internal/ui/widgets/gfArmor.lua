@@ -22,5 +22,5 @@ function gfArmor:draw()
 
 	local player = getPlayer();
 
-	drawShadowText(144, -253, GF_FONT_SIZE_BIG, GF_ARMOR_COLORS[player.armorProtection+1], player.armor);
+	drawText(144, -253, player.armor, GF_ARMOR_COLORS[player.armorProtection+1], GF_FONT_SIZE_BIG, true);
 end

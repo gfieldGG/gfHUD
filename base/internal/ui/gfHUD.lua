@@ -63,7 +63,7 @@ GF_BUFFS = {
 function drawBox(x, y, w, h, color)
 	-- draw shadows
 	local svgName = "internal/ui/gfHUD/" .. w .. h;
-	drawShadowSvg(svgName, x+(w/2), y, w/2);
+	drawSvg(x+(w/2), y, svgName, nil, w/2, true); --TODO radius for when height is bigger than width
 
 	y = y - (h/2);
 	-- draw box
@@ -75,33 +75,34 @@ end
 
 --
 
-function drawShadowSvg(svgName, x, y, radius, color)
-	-- shadow
-	nvgBeginPath();
-	nvgFillColor(Color(0, 0, 0, 51));
-	nvgSvg(svgName, x, y, radius, 24);
-	-- shadow top
-	nvgBeginPath();
-	nvgFillColor(Color(0, 0, 0, 26));
-	nvgSvg(svgName, x, y-1, radius, 4);
+local function gfSvg(x, y, svgName, color, radius, blur)
+	if blur == nil then blur = 0 end
 
-	-- shadow bottom
-	nvgBeginPath();
-	nvgFillColor(Color(0, 0, 0, 85));
-	nvgSvg(svgName, x, y+4, radius, 4);
-
-	-- draw svg
-	if color == nil then return end; -- skip colored svg if no color
 	nvgBeginPath();
 	nvgFillColor(color);
-	nvgSvg(svgName, x, y, radius);
+	nvgSvg(svgName, x, y, radius, blur);
+end
+
+function drawSvg(x, y, svgName, color, radius, shadowed)
+	if shadowed then
+		-- shadow
+		gfSvg(x, y, svgName, Color(0, 0, 0, 51), radius, 24);
+		-- shadow top
+		gfSvg(x, y-1, svgName, Color(0, 0, 0, 26), radius, 4);
+		-- shadow bottom
+		gfSvg(x, y+4, svgName, Color(0, 0, 0, 26), radius, 4);
+	end
+	-- skip colored svg if no color
+	if color ~= nil then
+		gfSvg(x, y, svgName, color, radius);
+	end
 end
 
 --
 
-function drawText(x, y, text, color, size, blur)
-	nvgBeginPath();
+local function gfText(x, y, text, color, size, blur)
 	if blur == nil then blur = 0 end
+	nvgBeginPath();
 	nvgFontBlur(blur);
 	nvgFillColor(color);
 	nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
@@ -114,18 +115,15 @@ function drawText(x, y, text, color, size, blur)
 	nvgText(x, y-yOff, text);
 end
 
---
-
-function drawShadowText(x, y, size, color, text)
-	-- shadow
-	drawText(x, y, text, Color(0, 0, 0, 51), size, 24);
-
-	-- shadow top
-	drawText(x, y-1, text, Color(0, 0, 0, 26), size, 4);
-
-	-- shadow bottom
-	drawText(x, y+4, text, Color(0, 0, 0, 85), size, 4);
-
+function drawText (x, y, text, color, size, shadowed)
+	if shadowed then
+		-- shadow
+		gfText(x, y, text, Color(0, 0, 0, 51), size, 24);
+		-- shadow top
+		gfText(x, y-1, text, Color(0, 0, 0, 26), size, 4);
+		-- shadow bottom
+		gfText(x, y+4, text, Color(0, 0, 0, 85), size, 4);
+	end
 	-- text
-	drawText(x, y, text, color, size);
+	gfText(x, y, text, color, size);
 end
