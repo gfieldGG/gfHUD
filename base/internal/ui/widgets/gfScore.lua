@@ -131,10 +131,6 @@ function gfScore:draw()
 	local scoreColor, scoreFrameColor, scoreText = self.GetDeltaColorAndText();
 
 	drawBox(108, scoreHeight/2, scoreWidth, scoreHeight, scoreFrameColor);
-	nvgBeginPath();
-	nvgFontFace(GF_FONT);
-	nvgFontSize(GF_FONT_SIZE_MEDIUM);
-	nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
-	nvgFillColor(scoreColor);
-	nvgText(108+(scoreWidth/2), (scoreHeight/2)-3, scoreText);
+
+	drawText(108+(scoreWidth/2), scoreHeight/2, scoreText, scoreColor, GF_FONT_SIZE_MEDIUM);
 end

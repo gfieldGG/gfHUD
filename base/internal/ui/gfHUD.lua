@@ -3,9 +3,9 @@ require "base/internal/ui/reflexcore"
 --
 
 GF_FONT = "robotocondensed-bold";
-GF_FONT_SIZE_SMALL = 48*(4/3);
-GF_FONT_SIZE_MEDIUM = 80*(4/3);
-GF_FONT_SIZE_BIG = 128*(4/3);
+GF_FONT_SIZE_SMALL = 48;
+GF_FONT_SIZE_MEDIUM = 80;
+GF_FONT_SIZE_BIG = 128;
 
 GF_CORNER_RADIUS = 2;
 
@@ -94,29 +94,31 @@ function drawShadowSvg(svgName, x, y, radius, color)
 	nvgSvg(svgName, x, y, radius);
 end
 
-function drawShadowText(x, y, size, align, color, text)
+function drawText(x, y, text, color, size, blur)
 	nvgBeginPath();
+	if blur == nil then blur = 0 end
+	nvgFontBlur(blur);
+	nvgFillColor(color);
+	nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
 	nvgFontFace(GF_FONT);
-	nvgFontSize(size);
-	nvgTextAlign(align, NVG_ALIGN_MIDDLE);
 
+	-- translate from px to nanovg sizing and offset
+	nvgFontSize(size*(4/3));
+	local yOff = size*0.05;
+
+	nvgText(x, y-yOff, text);
+end
+
+function drawShadowText(x, y, size, color, text)
 	-- shadow
-	nvgFontBlur(24);
-	nvgFillColor(Color(0, 0, 0, 51));
-	nvgText(x, y, text);
+	drawText(x, y, text, Color(0, 0, 0, 51), size, 24);
 
 	-- shadow top
-	nvgFontBlur(4);
-	nvgFillColor(Color(0, 0, 0, 26));
-	nvgText(x, y-1, text);
+	drawText(x, y-1, text, Color(0, 0, 0, 26), size, 4);
 
 	-- shadow bottom
-	nvgFontBlur(4);
-	nvgFillColor(Color(0, 0, 0, 85));
-	nvgText(x, y+4, text);
+	drawText(x, y+4, text, Color(0, 0, 0, 85), size, 4);
 
 	-- text
-	nvgFontBlur(0);
-	nvgFillColor(color);
-	nvgText(x, y, text);
+	drawText(x, y, text, color, size);
 end

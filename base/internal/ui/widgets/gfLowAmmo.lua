@@ -29,12 +29,8 @@ local function drawAmmo(weapon, ammo)
 	nvgFillColor(GF_COLORS.white);
 	nvgSvg(icon, x, y, 24);
 	x = x +24+8+28;
-	nvgBeginPath();
-	nvgFillColor(GF_COLORS.white);
-	nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
-	nvgFontFace(GF_FONT);
-	nvgFontSize(GF_FONT_SIZE_SMALL);
-	nvgText(x, y-3, ammo);
+	drawText(x, y, ammo, GF_COLORS.white, GF_FONT_SIZE_SMALL);
+
 end
 
 function gfLowAmmo:draw()

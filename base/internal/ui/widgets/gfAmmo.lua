@@ -29,10 +29,6 @@ function gfAmmo:draw()
 
 	local player = getPlayer();
 
-	nvgFontFace(GF_FONT);
-	nvgFontSize(GF_FONT_SIZE_SMALL);
-	nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
-
 	local ammoWidth = 168;
 	local ammoHeight = 64;
 	local iconRadius = 24;
@@ -56,7 +52,7 @@ function gfAmmo:draw()
 			nvgFillColor(svgColor);
 			nvgSvg(svgName, x, y, iconRadius);
 			x = x + 74.5;
-			nvgText(x, y-3, getAmmo(weapon));
+			drawText(x,y,getAmmo(weapon), svgColor, GF_FONT_SIZE_SMALL);
 			x = x + 77.5;
 		else
 			local ammoColor = GF_COLORS.white;
@@ -69,7 +65,7 @@ function gfAmmo:draw()
 			x = x + 40;
 			drawShadowSvg(svgName, x, y, iconRadius, svgColor);
 			x = x + 74.5;
-			drawShadowText(x, y-3, GF_FONT_SIZE_SMALL, NVG_ALIGN_CENTER, ammoColor, getAmmo(weapon));
+			drawShadowText(x, y, GF_FONT_SIZE_SMALL, ammoColor, getAmmo(weapon));
 			x = x + 77.5;
 		end
 	end

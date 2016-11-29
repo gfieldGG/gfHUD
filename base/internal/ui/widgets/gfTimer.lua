@@ -35,15 +35,9 @@ function gfTimer:draw()
 
 	drawBox(-(timerWidth/2), timerHeight/2, timerWidth, timerHeight, GF_COLORS.dark);
 
-	nvgBeginPath();
-	nvgFillColor(GF_COLORS.white);
-	nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
-	nvgFontFace(GF_FONT);
 	if (world.gameState == GAME_STATE_ACTIVE) or (world.gameState == GAME_STATE_ROUNDACTIVE) then
-		nvgFontSize(GF_FONT_SIZE_MEDIUM);
-		nvgText(0, (timerHeight/2-3), getTime());
+		drawText(0, timerHeight/2, getTime(), GF_COLORS.white, GF_FONT_SIZE_MEDIUM);
 	else
-		nvgFontSize(GF_FONT_SIZE_SMALL);
-		nvgText(0, (timerHeight/2)-2, "WARMUP");
+		drawText(0, timerHeight/2, "WARMUP", GF_COLORS.white, GF_FONT_SIZE_SMALL);
 	end
 end
