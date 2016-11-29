@@ -17,7 +17,7 @@ end
 
 --
 
-local function drawCountdown()
+local function drawCountdown(x, y)
 	local timeRemaining = world.gameTimeLimit - world.gameTime;
 	local t = FormatTime(timeRemaining);
 
