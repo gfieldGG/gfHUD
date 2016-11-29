@@ -5,6 +5,7 @@ require "base/internal/ui/gfhud"
 
 gfTimer =
 {
+	lastTickSeconds = -1
 };
 registerWidget("gfTimer");
 
@@ -12,6 +13,26 @@ registerWidget("gfTimer");
 
 function gfTimer:initialize()
 
+end
+
+--
+
+local function drawCountdown()
+	local timeRemaining = world.gameTimeLimit - world.gameTime;
+	local t = FormatTime(timeRemaining);
+
+	-- this flicks to 0 some times, just clamp it to 1
+	t.seconds = math.max(1, t.seconds);
+
+
+	local text = t.seconds;
+	drawText(x, y, text, GF_COLORS.white, GF_FONT_SIZE_MEDIUM);
+
+
+	if gfTimer.lastTickSeconds ~= t.seconds then
+		gfTimer.lastTickSeconds = t.seconds;
+		playSound("internal/ui/match/match_countdown_tick"); --TODO add FIGHT when match starts
+	end
 end
 
 --
@@ -33,9 +54,11 @@ function gfTimer:draw()
 	local timerWidth = 216;
 	local timerHeight = 96;
 
-	drawBox(-(timerWidth/2), timerHeight/2, timerWidth, timerHeight, GF_COLORS.dark);
+	drawBox(-(timerWidth/2), (timerHeight/2)-4, timerWidth, timerHeight+4, GF_COLORS.dark); --moved 4 units to hide top rounded corners
 
-	if (world.gameState == GAME_STATE_ACTIVE) or (world.gameState == GAME_STATE_ROUNDACTIVE) then
+	if world.timerActive and (world.gameState == GAME_STATE_WARMUP or world.gameState == GAME_STATE_ROUNDPREPARE) then
+		drawCountdown(0, timerHeight/2);
+	elseif (world.gameState == GAME_STATE_ACTIVE) or (world.gameState == GAME_STATE_ROUNDACTIVE) then
 		drawText(0, timerHeight/2, getTime(), GF_COLORS.white, GF_FONT_SIZE_MEDIUM);
 	else
 		drawText(0, timerHeight/2, "WARMUP", GF_COLORS.white, GF_FONT_SIZE_SMALL);

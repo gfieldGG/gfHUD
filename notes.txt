@@ -38,7 +38,6 @@ wenn flagge zu mega, flagge oben
 
 
 TODO buffs
-TODO font offset via function
 TODO all the drawing in functions
 TODO global var for shadow colors and blur
 TODO low ammo (maybe also current ammo display)
@@ -57,3 +56,4 @@ TODO adjust yellow color
 TODO show item pickups (no timer or stamp)
 TODO color life
 TODO show timer in deathscreen
+TODO GameMessages in Chat
