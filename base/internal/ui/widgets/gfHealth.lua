@@ -22,5 +22,5 @@ function gfHealth:draw()
 
 	local player = getPlayer();
 
-	drawText(-144, -253, player.health, GF_COLORS.white, GF_FONT_SIZE_BIG, true);
+	drawText(-144, -253, player.health, ((player.health > 50) and GF_COLORS.white or GF_COLORS.red), GF_FONT_SIZE_BIG, true);
 end
