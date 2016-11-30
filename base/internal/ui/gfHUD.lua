@@ -63,7 +63,7 @@ GF_BUFFS = {
 function drawBox(x, y, w, h, color)
 	-- draw shadows
 	local svgName = "internal/ui/gfHUD/" .. w .. h;
-	drawSvg(x+(w/2), y, svgName, nil, w/2, true); --TODO radius for when height is bigger than width
+	drawSvg(x+(w/2), y, svgName, nil, w/2, true);
 
 	y = y - (h/2);
 	-- draw box

@@ -18,9 +18,6 @@ end
 
 local function drawBuff (x, y, buff, percent)
 	drawBox(x, y, 24, 24, buff[2]);
-	--[[nvgBeginPath();
-	nvgFillColor(GF_COLORS.white);
-	nvgSvg(buff[1], x+12, y, buff[3]);--]]
 	drawSvg(x+12, y, buff[1], GF_COLORS.white, buff[3]);
 end
 
@@ -34,7 +31,7 @@ function gfBuffs:draw()
 
 	local x = -12;
 	local y = -241;
-
+	-- TODO make this nicer
 	-- carnage
 	if player.carnageTimer > 0 then
 		drawBuff(x, y, GF_BUFFS.carnage);
