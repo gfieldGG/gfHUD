@@ -17,8 +17,23 @@ end
 --
 
 local function drawBuff (x, y, buff, percent)
-	drawBox(x, y, 24, 24, buff[2]);
-	drawSvg(x+12, y, buff[1], GF_COLORS.white, buff[3]);
+	local buffSize = 24;
+
+	drawBox(x, y, buffSize, buffSize, buff[2]);
+	drawSvg(x+buffSize/2, y, buff[1], GF_COLORS.white, buff[3]);
+
+	-- draw bufftime bar
+	if percent then
+		nvgBeginPath();
+		nvgFillColor(Color(255, 255, 255, 128))
+		nvgRect(x+buffSize+2, y-buffSize/2, 2, buffSize);
+		nvgFill();
+
+		nvgBeginPath();
+		nvgFillColor(Color(79, 224, 50, 255));
+		nvgRect(x+buffSize+2, y-buffSize/2+buffSize-buffSize*percent, 2, buffSize*percent);
+		nvgFill();
+	end
 end
 
 --
@@ -34,13 +49,13 @@ function gfBuffs:draw()
 	-- TODO make this nicer
 	-- carnage
 	if player.carnageTimer > 0 then
-		drawBuff(x, y, GF_BUFFS.carnage);
+		drawBuff(x, y, GF_BUFFS.carnage, player.carnageTimer / 30000);
 		y = y - 32;
 	end
 
 	-- resist
 	if player.resistTimer > 0 then
-		drawBuff(x, y, GF_BUFFS.resist);
+		drawBuff(x, y, GF_BUFFS.resist, player.carnageTimer / 30000);
 		y = y - 32;
 	end
 
