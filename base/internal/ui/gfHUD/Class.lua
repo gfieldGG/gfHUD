@@ -1,5 +1,4 @@
 Class = {};
-Class.__index = Class;
 
 
 function Class:new(obj)
