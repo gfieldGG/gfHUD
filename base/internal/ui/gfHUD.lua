@@ -62,7 +62,7 @@ GF_BUFFS = {
 
 function drawBox(x, y, w, h, color)
 	-- draw shadows
-	local svgName = "internal/ui/gfHUD/" .. w .. h;
+	local svgName = "internal/ui/gfHUD/svg/" .. w .. h;
 	drawSvg(x+(w/2), y, svgName, nil, w/2, true);
 
 	y = y - (h/2);
@@ -90,7 +90,7 @@ function drawSvg(x, y, svgName, color, radius, shadowed)
 		-- shadow top
 		gfSvg(x, y-1, svgName, Color(0, 0, 0, 26), radius, 4);
 		-- shadow bottom
-		gfSvg(x, y+4, svgName, Color(0, 0, 0, 26), radius, 4);
+		gfSvg(x, y+4, svgName, Color(0, 0, 0, 85), radius, 4);
 	end
 	-- skip colored svg if no color
 	if color ~= nil then
