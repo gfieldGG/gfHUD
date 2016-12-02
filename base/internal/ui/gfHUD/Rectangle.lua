@@ -1,30 +1,51 @@
 require "base/internal/ui/gfHUD/Shadowable";
 
 Rectangle = Shadowable:extend({
-	width = 8,
-	height = 8,
-	color = Color(255, 255, 255, 255),
-	cornerRadius = 2
+	cornerRadius = 0,
+	anchorCenter = true
 });
 
 
 function Rectangle:draw()
 	self.super.draw(self);
 
+	local x, y = self:getTopLeft();
 	nvgBeginPath();
 	nvgFillColor(self.color);
-	nvgRoundedRect(self.absoluteX, self.absoluteY, self.width, self.height, self.cornerRadius);
+	nvgRoundedRect(x, y, self.width, self.height, self.cornerRadius);
 	nvgFill();
 end
 
 
-function Rectangle:shadowFunction(shadows)
-	if shadows.blur == nil then shadows.blur = 0 end
-
+function Rectangle:shadowFunction(shadow)
+	local x, y = self:getCenter();
 	nvgBeginPath();
-	nvgFillColor(shadows.color);
+	nvgFillColor(shadow.color);
 	local svgName = "internal/ui/gfHUD/svg/" .. self.width .. self.height;
-	nvgSvg(svgName, ((self.absoluteX + shadows.offsetX) + self.width/2), ((self.absoluteY + shadows.offsetY) + self.height/2), self.width/2, shadows.blur);
+	nvgSvg(svgName, x + shadow.offsetX, y + shadow.offsetY, self.width/2, shadow.blur);
 end
 
-return Rectangle;
+
+function Rectangle:getTopLeft()
+	local x = 0;
+	local y = 0;
+	if self.anchorCenter then
+		x = self.absoluteX-self.width/2;
+		y =	self.absoluteY-self.height/2;
+		return x, y;
+	else
+		return self.absoluteX, self.absoluteY;
+	end
+end
+
+function Rectangle:getCenter()
+	local x = 0;
+	local y = 0;
+	if not self.anchorCenter then
+		x = self.absoluteX + self.width/2;
+		y =	self.absoluteY + self.height/2;
+		return x, y;
+	else
+		return self.absoluteX, self.absoluteY;
+	end
+end
