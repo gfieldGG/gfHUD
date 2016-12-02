@@ -1,7 +1,7 @@
-local Drawable = require "base/internal/ui/gfHUD/Drawable";
+require "base/internal/ui/gfHUD/Drawable";
 
 
-local function ShadowableFactory(shadows)
+function ShadowableFactory(shadows)
 	local Shadowable = Drawable:new({
 		shadowed = false
 	});
@@ -23,6 +23,3 @@ local function ShadowableFactory(shadows)
 
 	return Shadowable;
 end
-
-
-return ShadowableFactory;

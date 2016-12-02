@@ -1,4 +1,4 @@
-local Class = {};
+Class = {};
 Class.__index = Class;
 
 
@@ -12,6 +12,3 @@ function Class:new(obj)
 
 	return obj;
 end
-
-
-return Class;

@@ -1,7 +1,7 @@
-local Class = require "base/internal/ui/gfHUD/Class";
+require "base/internal/ui/gfHUD/Class";
 
 
-local Drawable = Class:new({
+Drawable = Class:new({
 	x = 0,
 	y = 0,
 	absoluteX = 0,
@@ -9,7 +9,7 @@ local Drawable = Class:new({
 	children = {},
 	parent = nil
 });
-Drawable.__index = Drawable;
+--Drawable.__index = Drawable;
 
 
 function Drawable:setPosition(x, y)
@@ -45,6 +45,3 @@ function Drawable:updateAbsolutePosition()
 
 	return self;
 end
-
-
-return Drawable;

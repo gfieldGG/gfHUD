@@ -1,4 +1,4 @@
-local Rectangle = require "../gfHUD/Rectangle"
+require "../gfHUD/Rectangle"
 
 
 gfTest =
@@ -13,8 +13,8 @@ end
 
 function gfTest:draw(args)
 	local rect = Rectangle:new({
-		width = 24,
-		height = 24,
+		width = 168,
+		height = 64,
 		color = Color(255,0,255),
 		shadowed = true
 	});

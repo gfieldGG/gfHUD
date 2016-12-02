@@ -1,7 +1,7 @@
-local ShadowableFactory = require "base/internal/ui/gfHUD/ShadowableFactory";
+require "base/internal/ui/gfHUD/ShadowableFactory";
 
 
-return ShadowableFactory({
+Shadowable = ShadowableFactory({
 	{
 		offsetX = 0,
 		offsetY = 0,
