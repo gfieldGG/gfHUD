@@ -11,10 +11,10 @@ function Class:extend(o)
 	return o;
 end
 
-function Class:new(o)
+function Class:new(...)
 	o = self:extend(o);
 
-	if o.init ~= nil then o:init() end
+	if o.init ~= nil then o:init(...) end
 
 	return o;
 end
