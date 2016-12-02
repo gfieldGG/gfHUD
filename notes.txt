@@ -52,3 +52,4 @@ TODO show item pickups (no timer or stamp)
 TODO color life
 TODO show timer in deathscreen
 TODO GameMessages in Chat
+TODO implement new score / timer design

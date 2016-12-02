@@ -127,5 +127,5 @@ function gfScore:draw()
 
 	drawBox(108, scoreHeight/2, scoreWidth, scoreHeight, scoreFrameColor);
 
-	drawText(108+(scoreWidth/2), scoreHeight/2, scoreText, scoreColor, GF_FONT_SIZE_MEDIUM);
+	drawText(108+(scoreWidth/2)-1, scoreHeight/2+2, scoreText, scoreColor, GF_FONT_SIZE_MEDIUM);
 end

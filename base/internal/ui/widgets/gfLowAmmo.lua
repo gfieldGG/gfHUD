@@ -18,7 +18,7 @@ end
 
 local function drawAmmo(weapon, ammo)
 	local w = 128;
-	local h = 56;
+	local h = 64;
 	local x = -w/2;
 	local y = -424-(h/2);
 

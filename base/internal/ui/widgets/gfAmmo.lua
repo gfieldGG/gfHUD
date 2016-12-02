@@ -35,7 +35,7 @@ function drawAmmoBox (x, y, weapon, ammo, pickedup, selected)
 		drawBox(x, y, ammoWidth, ammoHeight, weaponColor);
 	end
 	x = x + 40;
-	drawSvg(x, y, svgName, (selected and GF_COLORS.white or pickedup and weaponColor or GF_COLORS.grey), iconRadius, not selected);
+	drawSvg(x, y, svgName, (selected and GF_COLORS.white or (pickedup and weaponColor or GF_COLORS.grey)), iconRadius, not selected);
 	x = x + 74.5;
 	drawText(x, y, ammo, (pickedup and GF_COLORS.white or GF_COLORS.grey), GF_FONT_SIZE_SMALL, not selected);
 end

@@ -52,7 +52,7 @@ function gfTimer:draw()
 	local timerWidth = 216;
 	local timerHeight = 96;
 
-	drawBox(-(timerWidth/2), (timerHeight/2)-4, timerWidth, timerHeight+4, GF_COLORS.dark); --moved 4 units to hide top rounded corners
+	drawBox(-(timerWidth/2), (timerHeight/2)-1, timerWidth, timerHeight+2, GF_COLORS.dark); --moved 2 units to hide top rounded corners
 
 	if world.timerActive and (world.gameState == GAME_STATE_WARMUP or world.gameState == GAME_STATE_ROUNDPREPARE) then
 		drawCountdown(0, timerHeight/2);
