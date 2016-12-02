@@ -5,7 +5,6 @@ function ShadowableFactory(shadows)
 	local Shadowable = Drawable:new({
 		shadowed = false
 	});
-	Shadowable.__index = Shadowable;
 
 
 	function Shadowable:drawShadow()

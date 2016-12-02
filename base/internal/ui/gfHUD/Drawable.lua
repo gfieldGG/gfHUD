@@ -9,7 +9,6 @@ Drawable = Class:new({
 	children = {},
 	parent = nil
 });
---Drawable.__index = Drawable;
 
 
 function Drawable:setPosition(x, y)
