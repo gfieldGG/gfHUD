@@ -1,7 +1,7 @@
 require "base/internal/ui/gfHUD/Class";
 
 
-Drawable = Class:new({
+Drawable = Class:extend({
 	x = 0,
 	y = 0,
 	absoluteX = 0,

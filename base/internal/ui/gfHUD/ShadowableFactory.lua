@@ -2,7 +2,7 @@ require "base/internal/ui/gfHUD/Drawable";
 
 
 function ShadowableFactory(shadows)
-	local Shadowable = Drawable:new({
+	local Shadowable = Drawable:extend({
 		shadowed = false
 	});
 

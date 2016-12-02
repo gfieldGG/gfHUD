@@ -1,6 +1,6 @@
 require "base/internal/ui/gfHUD/Shadowable";
 
-Rectangle = Shadowable:new({
+Rectangle = Shadowable:extend({
 	width = 8,
 	height = 8,
 	color = Color(255, 255, 255, 255),
