@@ -1,20 +1,70 @@
 Class = {}
 
+local superize;
+
+local function makeSuper(obj, base)
+	local super = {
+		__index = function (table, key)
+			local home = base;
+
+			while home ~= nil and rawget(home, key) == nil do
+				home = getmetatable(home);
+			end
+
+			if home == nil then return nil end
+
+			local f = rawget(home, key);
+
+			return function (oldSelf, ...)
+				return f(superize(obj, getmetatable(home)), ...);
+			end;
+		end
+	};
+
+	setmetatable(super, super);
+
+	return super;
+end
+
+superize = function (obj, base)
+	local superizedObj = {
+		super = makeSuper(obj, base)
+	};
+
+	setmetatable(superizedObj, {
+		__index = obj,
+		__newindex = obj
+	});
+
+	return superizedObj;
+end
+
 function Class:extend(o)
 	self.__index = self;
 
 	o = o or {};
 
 	setmetatable(o, self);
-	o.super = getmetatable(self);
 
 	return o;
 end
 
 function Class:new(...)
-	o = self:extend(o);
+	local o = self:extend();
 
-	if o.init ~= nil then o:init(...) end
+	o.super = makeSuper(o, self);
+
+	local init = o.super.init;
+
+	if init ~= nil then init(o, ...) end
 
 	return o;
+end
+
+function Class:init(o)
+	if o == nil then return end
+
+	for k, v in pairs(o) do
+		self[k] = v;
+	end
 end
