@@ -1,6 +1,6 @@
 Class = {}
 
-local superize;
+local addSuper;
 
 local function makeSuper(obj, base)
 	local super = {
@@ -16,7 +16,7 @@ local function makeSuper(obj, base)
 			local f = rawget(home, key);
 
 			return function (oldSelf, ...)
-				return f(superize(obj, getmetatable(home)), ...);
+				return f(addSuper(obj, getmetatable(home)), ...);
 			end;
 		end
 	};
@@ -26,7 +26,7 @@ local function makeSuper(obj, base)
 	return super;
 end
 
-superize = function (obj, base)
+addSuper = function (obj, base)
 	local superizedObj = {
 		super = makeSuper(obj, base)
 	};
