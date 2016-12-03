@@ -15,16 +15,20 @@ function gfTest:initialize()
 		color = Color(224, 50, 52),
 		shadowed = true
 	});
-end
 
-function gfTest:draw(args)
-	self.rect:draw();
-
-	local icon = Icon:new({
+	self.icon = Icon:new({
 		width = 48,
 		color = Color(224, 50, 52),
 		svgPath = "internal/ui/icons/weapon6",
 		shadowed = true
+	});
+
+	self.text = Text:new({
+
 	})
-	icon:draw();
+end
+
+function gfTest:draw(args)
+	self.rect:draw();
+	self.icon:draw();
 end

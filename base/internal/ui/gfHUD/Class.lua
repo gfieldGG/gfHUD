@@ -1,4 +1,4 @@
-Class = {}
+Class = {};
 
 local addSuper;
 

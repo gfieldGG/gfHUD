@@ -11,6 +11,11 @@ Drawable = Class:extend({
 });
 
 
+function Drawable:init(x, y)
+	self:setPosition(x, y);
+end
+
+
 function Drawable:setPosition(x, y)
 	self.x = x;
 	self.y = y;
@@ -43,4 +48,11 @@ function Drawable:updateAbsolutePosition()
 	end
 
 	return self;
+end
+
+
+function Drawable:draw()
+	for i, v in ipairs(self.children) do
+		v:draw();
+	end
 end
