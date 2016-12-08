@@ -6,11 +6,16 @@ Drawable = Class:extend({
 	y = 0,
 	absoluteX = 0,
 	absoluteY = 0,
-	children = {},
 	parent = nil,
 	hidden = false
 });
 
+
+function Drawable:init(preset)
+	self.super:init(preset);
+
+	self.children = {};
+end
 
 function Drawable:setPosition(x, y)
 	self.x = x;
