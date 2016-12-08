@@ -1,13 +1,15 @@
 require "base/internal/ui/gfHUD/Shadowable";
+require "base/internal/ui/gfHUD/config";
+
 
 Rectangle = Shadowable:extend({
-	cornerRadius = 0,
+	cornerRadius = GF_SIZES.cornerRadius,
 	anchorCenter = true
 });
 
 
-function Rectangle:draw()
-	self.super.draw(self);
+function Rectangle:_draw()
+	self.super:_draw();
 
 	local x, y = self:getTopLeft();
 	nvgBeginPath();

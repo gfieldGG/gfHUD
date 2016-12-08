@@ -2,8 +2,8 @@ require "base/internal/ui/gfHUD/Shadowable";
 
 Icon = Shadowable:new();
 
-function Icon:draw()
-	self.super.draw(self);
+function Icon:_draw()
+	self.super:_draw();
 
 	nvgBeginPath();
 	nvgFillColor(self.color);

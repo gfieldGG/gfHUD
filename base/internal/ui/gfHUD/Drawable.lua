@@ -7,13 +7,9 @@ Drawable = Class:extend({
 	absoluteX = 0,
 	absoluteY = 0,
 	children = {},
-	parent = nil
+	parent = nil,
+	hidden = false
 });
-
-
-function Drawable:init(x, y)
-	self:setPosition(x, y);
-end
 
 
 function Drawable:setPosition(x, y)
@@ -52,7 +48,13 @@ end
 
 
 function Drawable:draw()
+	if self.hidden then return end;
+	self:_draw();
 	for i, v in ipairs(self.children) do
 		v:draw();
 	end
+end
+
+
+function Drawable:_draw()
 end

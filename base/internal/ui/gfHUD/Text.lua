@@ -8,8 +8,8 @@ Text = Shadowable:extend({
 	alignVertical = NVG_ALIGN_MIDDLE
 });
 
-function Text:draw()
-	self.super.draw(self);
+function Text:_draw()
+	self.super:_draw();
 
 	nvgBeginPath();
 	nvgFontBlur(0);

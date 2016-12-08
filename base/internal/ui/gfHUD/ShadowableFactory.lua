@@ -16,7 +16,7 @@ function ShadowableFactory(shadows)
 	end
 
 
-	function Shadowable:draw()
+	function Shadowable:_draw()
 		self:drawShadow();
 	end
 
