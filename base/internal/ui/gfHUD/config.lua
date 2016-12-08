@@ -23,7 +23,7 @@ GF_COLORS = {
 	dark = Color(51, 51, 51),
 	darkred = Color(102, 23, 24),
 	white = Color(255, 255, 255),
-	grey = Color(180, 180, 180),
+	grey = Color(178, 178, 178),
 	darkblue = Color(49,68,224)
 };
 

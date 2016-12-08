@@ -10,24 +10,29 @@ AmmoBox = Drawable:extend({
 });
 
 function AmmoBox:init(weaponIndex)
+	self.super:init();
+
 	self.weaponIndex = weaponIndex;
 	self.background = Rectangle:new({
+		anchorCenter = false,
 		width = 168,
 		height = 64,
 		color = GF_WEAPON_COLORS[self.weaponIndex]
 	});
-	self.addChild(self.background);
+	self:addChild(self.background);
+
 	self.icon = Icon:new({
 		x = 40,
 		y = 32,
 		color = GF_WEAPON_COLORS[self.weaponIndex],
 		svgPath = "internal/ui/icons/weapon" .. self.weaponIndex,
 	});
-	self.addChild(self.icon);
+	self:addChild(self.icon);
+
 	self.ammoCount = Text:new({
-		x = 144.5,
+		x = 114.5,
 		y = 32,
 		text = self.ammo
 	});
-	self.addChild(self.ammoCount);
+	self:addChild(self.ammoCount);
 end

@@ -36,9 +36,9 @@ end
 
 
 function Drawable:updateAbsolutePosition()
-	if parent then
-		self.absoluteX = parent.absoluteX + self.x;
-		self.absoluteY = parent.absoluteY + self.y;
+	if self.parent then
+		self.absoluteX = self.parent.absoluteX + self.x;
+		self.absoluteY = self.parent.absoluteY + self.y;
 	else
 		self.absoluteX = self.x;
 		self.absoluteY = self.y;
