@@ -8,9 +8,6 @@ function WeaponRack:init(args)
 	self.super:init(args);
 
 	self.ammoBoxes = {};
-end
-
-function WeaponRack:build()
 	local xPos = 0;
 	local yPos = 0;
 	for k, v in ipairs(GF_WEAPON_ORDER) do
@@ -29,9 +26,9 @@ function WeaponRack:build()
 	self:addChildren(self.ammoBoxes);
 end
 
---[[function WeaponRack:_draw()
+function WeaponRack:_draw()
 	local player = getPlayer();
 	for k, v in ipairs(self.ammoBoxes) do
 		v:update(player);
 	end
-end--]]
+end

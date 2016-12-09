@@ -38,8 +38,6 @@ function AmmoBox:init(args)
 		shadowed = true
 	});
 	self:addChild(self.ammoCount);
-
-	self:setStatus(self.status);
 end
 
 function AmmoBox:setStatus(status)
@@ -65,7 +63,7 @@ function AmmoBox:setStatus(status)
 end
 
 function AmmoBox:update(player)
-	--[[self.ammo = player.weapons[self.weaponIndex].ammo;
+	self.ammo = player.weapons[self.weaponIndex].ammo;
 	self.ammoCount.text = self.ammo;
 	local stat = 0;
 	if player.weapons[self.weaponIndex].pickedup then
@@ -74,5 +72,5 @@ function AmmoBox:update(player)
 			stat = stat +1;
 		end
 	end
-	self:setStatus(stat);--]]
+	self:setStatus(stat);
 end
