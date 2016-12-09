@@ -39,6 +39,8 @@ function Drawable:addChildren(children)
 	for k, v in ipairs(children) do
 		self:addChild(v);
 	end
+
+	return self;
 end
 
 
@@ -66,7 +68,6 @@ function Drawable:draw()
 		v:draw();
 	end
 end
-
 
 function Drawable:_draw()
 end

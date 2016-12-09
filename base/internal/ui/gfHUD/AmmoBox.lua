@@ -69,7 +69,7 @@ function AmmoBox:update(player)
 	if player.weapons[self.weaponIndex].pickedup then
 		stat = stat + 1;
 		if self.weaponIndex == player.weaponIndexSelected then
-			stat = stat +1;
+			stat = stat + 1;
 		end
 	end
 	self:setStatus(stat);

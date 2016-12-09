@@ -20,8 +20,8 @@ function Text:_draw()
 	nvgFontFace(self.font);
 
 	-- translate from px to nanovg sizing and offset
-	nvgFontSize(self.fontSize*(4/3));
-	local yOff = self.fontSize*0.05;
+	nvgFontSize(self.fontSize * (4/3));
+	local yOff = self.fontSize * 0.05;
 
 	nvgText(self.absoluteX, self.absoluteY-yOff, self.text);
 end
@@ -34,8 +34,8 @@ function Text:shadowFunction(shadow)
 	nvgFontFace(self.font);
 
 	-- translate from px to nanovg sizing and offset
-	nvgFontSize(self.fontSize*(4/3));
-	local yOff = self.fontSize*0.05;
+	nvgFontSize(self.fontSize * (4/3));
+	local yOff = self.fontSize * 0.05;
 
 	nvgText(self.absoluteX+shadow.offsetX, self.absoluteY-yOff+shadow.offsetY, self.text);
 end

@@ -21,7 +21,7 @@ function WeaponRack:init(args)
 			x = xPos,
 			y = yPos
 		}));
-		xPos = xPos+192
+		xPos = xPos + 192
 	end
 	self:addChildren(self.ammoBoxes);
 end

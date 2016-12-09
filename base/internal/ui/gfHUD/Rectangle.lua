@@ -4,7 +4,7 @@ require "base/internal/ui/gfHUD/Shadowable";
 
 Rectangle = Shadowable:extend({
 	cornerRadius = GF_SIZES.cornerRadius,
-	anchorCenter = true
+	anchorCenter = false
 });
 
 
@@ -32,8 +32,8 @@ function Rectangle:getTopLeft()
 	local x = 0;
 	local y = 0;
 	if self.anchorCenter then
-		x = self.absoluteX-self.width/2;
-		y =	self.absoluteY-self.height/2;
+		x = self.absoluteX - self.width/2;
+		y =	self.absoluteY - self.height/2;
 		return x, y;
 	else
 		return self.absoluteX, self.absoluteY;
