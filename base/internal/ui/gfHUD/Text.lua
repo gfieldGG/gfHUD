@@ -1,11 +1,13 @@
+require "base/internal/ui/gfHUD/config";
 require "base/internal/ui/gfHUD/Shadowable";
 
 Text = Shadowable:extend({
-	font = "robotocondensed-bold",
-	fontSize = 48;
-	color = Color(255,255,255),
+	font = GF_FONT.font,
+	fontSize = GF_FONT.size.small,
+	color = GF_COLORS.white,
 	alignHorizontal = NVG_ALIGN_CENTER,
-	alignVertical = NVG_ALIGN_MIDDLE
+	alignVertical = NVG_ALIGN_MIDDLE,
+	shadowed = true
 });
 
 function Text:_draw()

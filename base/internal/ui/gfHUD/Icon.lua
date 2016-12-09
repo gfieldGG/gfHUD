@@ -1,8 +1,9 @@
+require "base/internal/ui/gfHUD/config";
 require "base/internal/ui/gfHUD/Shadowable";
 
 Icon = Shadowable:extend({
 	width = GF_SIZES.iconWidth,
-	color = Color(255,255,255)
+	color = GF_COLORS.white
 });
 
 function Icon:_draw()

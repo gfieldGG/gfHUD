@@ -13,8 +13,9 @@ Drawable = Class:extend({
 
 function Drawable:init(preset)
 	self.super:init(preset);
-
 	self.children = {};
+
+	self:updateAbsolutePosition();
 end
 
 function Drawable:setPosition(x, y)
@@ -32,6 +33,12 @@ function Drawable:addChild(child)
 	table.insert(self.children, child);
 
 	return self;
+end
+
+function Drawable:addChildren(children)
+	for k, v in ipairs(children) do
+		self:addChild(v);
+	end
 end
 
 

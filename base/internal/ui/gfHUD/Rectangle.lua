@@ -1,5 +1,5 @@
-require "base/internal/ui/gfHUD/Shadowable";
 require "base/internal/ui/gfHUD/config";
+require "base/internal/ui/gfHUD/Shadowable";
 
 
 Rectangle = Shadowable:extend({

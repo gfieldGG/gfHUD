@@ -1,0 +1,37 @@
+require "base/internal/ui/gfHUD/config";
+require "base/internal/ui/gfHUD/AmmoBox";
+
+
+WeaponRack = Drawable:extend();
+
+function WeaponRack:init(args)
+	self.super:init(args);
+
+	self.ammoBoxes = {};
+end
+
+function WeaponRack:build()
+	local xPos = 0;
+	local yPos = 0;
+	for k, v in ipairs(GF_WEAPON_ORDER) do
+		if k == 4 then
+			xPos = 0;
+			yPos = yPos + 80;
+		end
+
+		table.insert(self.ammoBoxes, AmmoBox:new({
+			weaponIndex = v,
+			x = xPos,
+			y = yPos
+		}));
+		xPos = xPos+192
+	end
+	self:addChildren(self.ammoBoxes);
+end
+
+--[[function WeaponRack:_draw()
+	local player = getPlayer();
+	for k, v in ipairs(self.ammoBoxes) do
+		v:update(player);
+	end
+end--]]

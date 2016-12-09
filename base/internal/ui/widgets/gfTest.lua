@@ -1,5 +1,4 @@
-require "base/internal/ui/gfHUD/AmmoBox";
-
+require "base/internal/ui/gfHUD/WeaponRack";
 
 gfTest =
 {
@@ -8,9 +7,14 @@ registerWidget("gfTest");
 
 
 function gfTest:initialize()
-	self.aBox = AmmoBox:new(6);
+
+	self.weaponRack = WeaponRack:new({
+		x = -276,
+		y = -184
+	});
+	self.weaponRack:build();
 end
 
 function gfTest:draw()
-	self.aBox:draw();
+	self.weaponRack:draw();
 end
