@@ -1,8 +1,10 @@
-require "base/internal/ui/gfHUD/config";
-require "base/internal/ui/gfHUD/Rectangle";
-require "base/internal/ui/gfHUD/Icon";
-require "base/internal/ui/gfHUD/Text";
+require "base/internal/ui/gfHUD/imports";
+if GF_IMPORTED.AmmoBox then return; end
 
+require "base/internal/ui/gfHUD/Drawable";
+require "base/internal/ui/gfHUD/Text";
+require "base/internal/ui/gfHUD/Icon";
+require "base/internal/ui/gfHUD/Rectangle";
 
 AmmoBox = Drawable:extend({
 	status = 0, -- 0 = not pickedup 1 = pickedup not selected 2 = selected

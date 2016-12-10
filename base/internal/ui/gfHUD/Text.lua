@@ -1,4 +1,6 @@
-require "base/internal/ui/gfHUD/config";
+require "base/internal/ui/gfHUD/imports";
+if GF_IMPORTED.Text then return; end
+
 require "base/internal/ui/gfHUD/Shadowable";
 
 Text = Shadowable:extend({

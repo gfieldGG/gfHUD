@@ -1,4 +1,7 @@
-require "base/internal/ui/gfHUD/config";
+require "base/internal/ui/gfHUD/imports";
+if GF_IMPORTED.WeaponRack then return; end
+
+require "base/internal/ui/gfHUD/Drawable";
 require "base/internal/ui/gfHUD/AmmoBox";
 
 
@@ -11,6 +14,7 @@ function WeaponRack:init(args)
 	local xPos = 0;
 	local yPos = 0;
 	for k, v in ipairs(GF_WEAPON_ORDER) do
+		if k>1 then break; end
 		if k == 4 then
 			xPos = 0;
 			yPos = yPos + 80;

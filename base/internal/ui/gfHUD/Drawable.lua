@@ -1,3 +1,6 @@
+require "base/internal/ui/gfHUD/imports";
+if GF_IMPORTED.Drawable then return; end
+
 require "base/internal/ui/gfHUD/Class";
 
 
@@ -14,7 +17,7 @@ Drawable = Class:extend({
 function Drawable:init(preset)
 	self.super:init(preset);
 	self.children = {};
-
+	consolePrint("drawawbekke init");
 	self:updateAbsolutePosition();
 end
 
@@ -62,7 +65,9 @@ end
 
 
 function Drawable:draw()
+	consolePrint(Class == getmetatable(Drawable) and "dtrue" or "dfalse");
 	if self.hidden then return end;
+	consolePrint("in drawalbe: " .. type(self.shadowFunction));
 	self:_draw();
 	for i, v in ipairs(self.children) do
 		v:draw();

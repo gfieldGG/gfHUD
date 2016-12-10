@@ -1,6 +1,7 @@
-require "base/internal/ui/gfHUD/config";
-require "base/internal/ui/gfHUD/Shadowable";
+require "base/internal/ui/gfHUD/imports";
+if GF_IMPORTED.Rectangle then return; end
 
+require "base/internal/ui/gfHUD/Shadowable";
 
 Rectangle = Shadowable:extend({
 	cornerRadius = GF_SIZES.cornerRadius,
